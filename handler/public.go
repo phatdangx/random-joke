@@ -1,13 +1,14 @@
 package handler
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
 
 type UseCase interface {
-	FetchRandomJoke(ctx echo.Context) (string, error)
+	FetchRandomJoke(ctx context.Context) (string, error)
 }
 
 type PublicHandler struct {
@@ -21,7 +22,8 @@ func NewPublicHandler(usecase UseCase) *PublicHandler {
 }
 
 func (h *PublicHandler) GetRandomJoke(c echo.Context) error {
-	joke, err := h.usecase.FetchRandomJoke(c)
+	ctx := c.Request().Context()
+	joke, err := h.usecase.FetchRandomJoke(ctx)
 	if err != nil {
 		return err
 	}

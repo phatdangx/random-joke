@@ -1,9 +1,8 @@
 package usecase
 
 import (
+	"context"
 	"random-joke/model"
-
-	"github.com/labstack/echo/v4"
 )
 
 type NameRepository interface {
@@ -26,7 +25,7 @@ func NewJokeUseCase(nameRepo NameRepository, jokeRepo JokeRepository) *UseCase {
 	}
 }
 
-func (uc *UseCase) FetchRandomJoke(c echo.Context) (string, error) {
+func (uc *UseCase) FetchRandomJoke(ctx context.Context) (string, error) {
 	name, err := uc.name.GetRandomName()
 	if err != nil {
 		return "", err
