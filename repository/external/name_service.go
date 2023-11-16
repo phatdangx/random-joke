@@ -33,12 +33,14 @@ func (ns *NameService) GetRandomName() (name *model.Name, err error) {
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Errorf("read random name body error: %v", err)
+		return nil, err
 	}
 
 	// Unmarshal the JSON data into struct
-	err = json.Unmarshal(body, name)
+	err = json.Unmarshal(body, &name)
 	if err != nil {
 		log.Errorf("unmarshall random name error: %v", err)
+		return nil, err
 	}
 
 	return name, nil

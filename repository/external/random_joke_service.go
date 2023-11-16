@@ -40,7 +40,7 @@ func (rjs *RandomJokeService) GetRandomJokeBaseOnName(name *model.Name) (joke *m
 	}
 
 	// Unmarshal the JSON data into struct
-	err = json.Unmarshal(body, joke)
+	err = json.Unmarshal(body, &joke)
 	if err != nil {
 		log.Errorf("unmarshall random joke error: %v", err)
 	}
