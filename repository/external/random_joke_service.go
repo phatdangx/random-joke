@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"random-joke/config"
 	"random-joke/model"
 
 	"github.com/labstack/gommon/log"
@@ -22,7 +23,7 @@ func NewRandomJokeService(client *http.Client) *RandomJokeService {
 
 func (rjs *RandomJokeService) GetRandomJokeBaseOnName(name *model.Name) (joke *model.RandomJoke, err error) {
 	// Prepare URL
-	url := fmt.Sprintf("http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=%s&lastName=%s", name.FirstName, name.LastName)
+	url := fmt.Sprintf(config.Config.ExternalService.RandomJoke, name.FirstName, name.LastName)
 
 	// Send GET req
 	resp, err := rjs.client.Get(url)

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"random-joke/config"
 	"random-joke/model"
 
 	"github.com/labstack/gommon/log"
@@ -21,7 +22,7 @@ func NewNameService(client *http.Client) *NameService {
 
 func (ns *NameService) GetRandomName() (name *model.Name, err error) {
 	// Send GET req
-	resp, err := ns.client.Get("https://names.mcquay.me/api/v0/")
+	resp, err := ns.client.Get(config.Config.ExternalService.RandomName)
 	if err != nil {
 		log.Errorf("get random name %v", err)
 		return nil, err
