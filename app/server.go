@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"os/signal"
+	"random-joke/config"
 	"random-joke/delivery/http"
 	"random-joke/handler"
 	"random-joke/repository/external"
@@ -39,7 +40,7 @@ func Start() {
 
 	// Start server
 	go func() {
-		port := "8080"
+		port := config.Config.Port
 		log.Info("start at port " + port)
 		err := e.Start(":" + port)
 		if err != nil {

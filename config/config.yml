@@ -1,3 +1,4 @@
+port: 9090
 external_service:
   random_name: https://names.mcquay.me/api/v0
   random_joke: http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=%s&lastName=%s

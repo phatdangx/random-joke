@@ -8,6 +8,7 @@ import (
 )
 
 type ConfigSchema struct {
+	Port            string `mapstructure:"port"`
 	ExternalService struct {
 		RandomName string `mapstructure:"random_name"`
 		RandomJoke string `mapstructure:"random_joke"`
