@@ -4,14 +4,38 @@ import (
 	"context"
 	"os"
 	"os/signal"
+	"random-joke/delivery/http"
+	"random-joke/handler"
+	"random-joke/repository/external"
+	"random-joke/usecase"
 	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
+
+	nethttp "net/http"
 )
 
 func Start() {
 	e := echo.New()
+
+	// init http client with timeout 3 seconds
+	client := &nethttp.Client{
+		Timeout: time.Second * 3,
+	}
+
+	// register external repository
+	nameRepo := external.NewNameService(client)
+	jokeRepo := external.NewRandomJokeService(client)
+
+	// register usecase
+	usecase := usecase.NewJokeUseCase(nameRepo, jokeRepo)
+
+	// register handler
+	publicHandler := handler.NewPublicHandler(usecase)
+
+	// register routes
+	http.NewPublicRoutes(e, publicHandler)
 
 	// Start server
 	go func() {

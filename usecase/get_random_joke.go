@@ -11,7 +11,7 @@ type NameRepository interface {
 }
 
 type JokeRepository interface {
-	GetRandomJokeBaseOnName(name model.Name) (joke model.RandomJoke, err error)
+	GetRandomJokeBaseOnName(name *model.Name) (joke *model.RandomJoke, err error)
 }
 
 type UseCase struct {

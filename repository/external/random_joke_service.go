@@ -20,7 +20,7 @@ func NewRandomJokeService(client *http.Client) *RandomJokeService {
 	}
 }
 
-func (rjs *RandomJokeService) GetRandomJokeBaseOnName(name model.Name) (joke *model.RandomJoke, err error) {
+func (rjs *RandomJokeService) GetRandomJokeBaseOnName(name *model.Name) (joke *model.RandomJoke, err error) {
 	// Prepare URL
 	url := fmt.Sprintf("http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=%s&lastName=%s", name.FirstName, name.LastName)
 
