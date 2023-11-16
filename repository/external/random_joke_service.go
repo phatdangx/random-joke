@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"random-joke/config"
 	"random-joke/model"
 
@@ -22,8 +23,14 @@ func NewRandomJokeService(client *http.Client) *RandomJokeService {
 }
 
 func (rjs *RandomJokeService) GetRandomJokeBaseOnName(name *model.Name) (joke *model.RandomJoke, err error) {
-	// Prepare URL
-	url := fmt.Sprintf(config.Config.ExternalService.RandomJoke, name.FirstName, name.LastName)
+	// Parameters
+	params := url.Values{}
+	params.Add("limitTo", "nerdy")
+	params.Add("firstName", name.FirstName)
+	params.Add("lastName", name.LastName) // Replace with actual last name
+
+	// Construct the complete URL with parameters
+	url := fmt.Sprintf("%s?%s", config.Config.ExternalService.RandomJoke, params.Encode())
 
 	// Send GET req
 	resp, err := rjs.client.Get(url)
