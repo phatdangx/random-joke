@@ -7,7 +7,7 @@ import (
 )
 
 type NameRepository interface {
-	GetRandomName() (name model.Name, err error)
+	GetRandomName() (name *model.Name, err error)
 }
 
 type JokeRepository interface {
