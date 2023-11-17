@@ -144,9 +144,11 @@ This strategy helps in reducing dependencies on the external service by providin
 To maintain the production readiness, there are some future tasks as follows:
 
 - 🟡 Write more tests to improve code coverage.
+- 🟡 Implement rate limiting to prevent abuse and DDoS attacks.
 - 🟡 Build a CI/CD pipeline.
 - 🟡 Deploy to a Kubernetes cluster to increase scalability.
-- 🟡 Implement rate limiting to prevent abuse and DDoS attacks.
+- 🟡 Log aggregation: ELK Stack (Elasticsearch, Logstash, Kibana)
+- 🟡 Monitoring: tracks various performance metrics like CPU usage, memory consumption, network latency, ... (Prometheus, Grafana) 
 
 ## Time Spent
 Approximate time spent on this task: ~ 5 hours
