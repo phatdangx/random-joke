@@ -134,10 +134,13 @@ The caching strategy in the NameService uses Redis and follows a lazy-loading pa
 This strategy helps in reducing dependencies on the external service by providing a fallback mechanism to retrieve recent data from the cache, ensuring efficiency and reliability.
 
 ### TODO
+
+To maintain the production readiness, there are some future tasks as follows:
+
 - 🟡 Write more tests to improve code coverage.
 - 🟡 Build a CI/CD pipeline.
 - 🟡 Deploy to a Kubernetes cluster to increase scalability.
 - 🟡 Implement rate limiting to prevent abuse and DDoS attacks.
 
 ## Time Spent
-Approximate time spent on this task: 5 hours
+Approximate time spent on this task: ~ 5 hours
