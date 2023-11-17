@@ -11,6 +11,7 @@ import (
 	"random-joke/usecase"
 	"time"
 
+	"github.com/go-redis/redis"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 
@@ -25,8 +26,14 @@ func Start() {
 		Timeout: time.Second * 3,
 	}
 
+	redisClient := redis.NewClient(&redis.Options{
+		Addr:     "redis:6379", // or your Redis server address
+		Password: "",           // no password set
+		DB:       0,            // use default DB
+	})
+
 	// register external repository
-	nameRepo := external.NewNameService(client)
+	nameRepo := external.NewNameService(client, redisClient)
 	jokeRepo := external.NewRandomJokeService(client)
 
 	// register usecase

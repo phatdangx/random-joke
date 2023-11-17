@@ -29,7 +29,7 @@ func TestGetRandomName(t *testing.T) {
 	config.Config.ExternalService.RandomName = mockServer.URL
 
 	// Create a NameService with a real http client
-	ns := external.NewNameService(http.DefaultClient)
+	ns := external.NewNameService(http.DefaultClient, nil)
 
 	// Call the method
 	name, err := ns.GetRandomName()

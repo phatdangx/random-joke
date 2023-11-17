@@ -5,3 +5,13 @@ services:
     image: random-joke:latest
     ports:
       - 9090:9090
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
