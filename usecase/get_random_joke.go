@@ -28,12 +28,12 @@ func NewJokeUseCase(nameRepo NameRepository, jokeRepo JokeRepository) *UseCase {
 func (uc *UseCase) FetchRandomJoke(ctx context.Context) (string, error) {
 	name, err := uc.name.GetRandomName()
 	if err != nil {
-		return "", err
+		return "", model.ErrorRandomeService
 	}
 
 	joke, err := uc.joke.GetRandomJokeBaseOnName(name)
 	if err != nil {
-		return "", err
+		return "", model.ErrorJokeService
 	}
 
 	return joke.Value.Joke, nil

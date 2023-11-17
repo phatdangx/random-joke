@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	echo "github.com/labstack/echo/v4"
+	context "context"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -14,21 +14,21 @@ type UseCase struct {
 }
 
 // FetchRandomJoke provides a mock function with given fields: ctx
-func (_m *UseCase) FetchRandomJoke(ctx echo.Context) (string, error) {
+func (_m *UseCase) FetchRandomJoke(ctx context.Context) (string, error) {
 	ret := _m.Called(ctx)
 
 	var r0 string
 	var r1 error
-	if rf, ok := ret.Get(0).(func(echo.Context) (string, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context) (string, error)); ok {
 		return rf(ctx)
 	}
-	if rf, ok := ret.Get(0).(func(echo.Context) string); ok {
+	if rf, ok := ret.Get(0).(func(context.Context) string); ok {
 		r0 = rf(ctx)
 	} else {
 		r0 = ret.Get(0).(string)
 	}
 
-	if rf, ok := ret.Get(1).(func(echo.Context) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context) error); ok {
 		r1 = rf(ctx)
 	} else {
 		r1 = ret.Error(1)
