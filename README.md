@@ -108,6 +108,10 @@ source .env/bin/activate
 
 # if you it correct, you will see a prefix like this in your terminal: (.env)
 
+# install locus
+
+pip install locust
+
 # let's run the load test
 
 locust -f locust.py
