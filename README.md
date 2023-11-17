@@ -9,7 +9,7 @@ This web service combines two existing services: fetching a random name and a Ch
 ### Prerequisites
 - Go installed on your system
 - Docker, Docker compose
-- For testing: [mockery](https://vektra.github.io/mockery/latest/)
+- For unit test: [mockery](https://vektra.github.io/mockery/latest/)
 - For loadtest: python3
 
 ### How to run the project
