@@ -83,6 +83,12 @@ go test random-joke/usecase -cover -count=1
 ok      random-joke/usecase     0.165s  coverage: 100.0% of statements
 ```
 
+Every time we update the interface, we need to regenerate the mocks to keep the unit tests up-to-date. Use this command:
+
+```
+mockery --all --output=mocks --outpkg=mocks
+```
+
 ### Performance Test
 
 I used [locust](https://locust.io/) to perform the load test. How to run the loadtest?
