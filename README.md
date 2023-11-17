@@ -84,6 +84,31 @@ ok      random-joke/usecase     0.165s  coverage: 100.0% of statements
 
 ### Performance Test
 
+I used [locust](https://locust.io/) to perform the load test. How to run the loadtest?
+
+```
+# move to the loadtest folder
+
+cd your-work-space/random-joke/loadtest
+
+# If you run loadtest for the first time, let's create a virtual environment for it
+
+python3 -m venv .env
+
+# activate the virtual environment
+
+source .env/bin/activate
+
+# if you it correct, you will see a prefix like this in your terminal: (.env)
+
+# let's run the load test
+
+locust -f locust.py
+
+# now you can access to the load test UI at: http://0.0.0.0:8089
+
+```
+
 - [Initial Report](./loadtest/report_initial_test.html): In the initial test, where I implemented the standard flow of getting a random name and then using that name to fetch a random joke, the failure rate was around 30% of the total requests.
 
 ![InitialScreenshot](./asset/initial.png)
