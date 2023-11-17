@@ -85,8 +85,16 @@ ok      random-joke/usecase     0.165s  coverage: 100.0% of statements
 ### Performance Test
 
 - [Initial Report](./loadtest/report_initial_test.html): In the initial test, where I implemented the standard flow of getting a random name and then using that name to fetch a random joke, the failure rate was around 30% of the total requests.
+
+![InitialScreenshot](./asset/initial.png)
+
 - [Report with retry mechanism](./loadtest/report_after_retry.html): After the first test, I observed that the Random Name service has a rate limit of approximately 10 requests per second. At times, if the service returned an error 429 (Too Many Requests), I could retry and still get a result. Therefore, I decided to explore the Exponential Backoff Mechanism. After implementation and testing, the failure rate dropped significantly to 6%. However, the response time also increased, from 300ms to 8000ms.
+
+![RetryScreenshot](./asset/retry.png)
+
 - [Report with caching mechanism](./loadtest/report_with_redis_cache.html): I then considered using Redis to cache names, so that whenever the third-party API is unavailable, I could use the cached name as a fallback. More details can be found in the Caching Strategy section. Overall, the results look promising, with the failure rate dropping to nearly 0% and the 95th percentile response time remaining around 300ms.
+
+![CacheScreenshot](./asset/cache.png)
 
 ### Cache Strategy:
 The caching strategy in the NameService uses Redis and follows a lazy-loading pattern. It operates as follows:
