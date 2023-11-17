@@ -67,7 +67,7 @@ The project is structured into four main layers:
 - ✅ The service is optimized for handling multiple concurrent requests.
 - ✅ Responsiveness under load is a key feature.
 - ✅ Unit test and load test increase the reliability
-- ✅ Dockerize the application for easier deployment.
+- ✅ Dockerize the application for easier deployment: apply 2 stages technique to reduce the final image size.
 - ✅ Caching to improve perforamnce
 
 ### Unit Test
