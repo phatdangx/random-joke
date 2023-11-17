@@ -2,5 +2,6 @@ version: "3"
 services:
   app:
     build: .
+    image: random-joke:latest
     ports:
       - 9090:9090

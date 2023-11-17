@@ -1,7 +1,6 @@
 up:
 	@ echo "Building latest version"
-	@ docker build -t random-joke:latest .
-	@ docker compose up -d
+	@ docker compose up --build -d
 
 down:
 	@ docker compose down
