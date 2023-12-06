@@ -58,7 +58,7 @@ func (ns *NameService) GetRandomName() (name *model.Name, err error) {
 
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
-			log.Errorf("read random name body error: %v", err)
+			log.Errorf("read random name body error1: %v", err)
 			return err
 		}
 
