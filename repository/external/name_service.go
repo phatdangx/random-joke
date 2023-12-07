@@ -52,7 +52,7 @@ func (ns *NameService) fetchNameFromCache() (*model.Name, error) {
 
 func (ns *NameService) cacheName(name *model.Name) error {
 	// Generate a unique key for the name, e.g., using a timestamp
-	key := "randomName:" + strconv.FormatInt(time.Now().UnixNano(), 10)
+	key := "randomName1:" + strconv.FormatInt(time.Now().UnixNano(), 10)
 
 	// Marshal
 	nameStr, err := json.Marshal(name)
